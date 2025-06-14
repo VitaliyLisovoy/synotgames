@@ -1,26 +1,25 @@
-import { test, expect, request } from "@playwright/test";
+import { test, request } from "@playwright/test";
+import { DogApi } from "../pages/dog_api.page";
 
-test("Dog CEO API - random image returns 200 and valid image URL", async () => {
-  // Create request context
+test("Dog CEO API - Validate random image response via POM", async () => {
+  // 🟢 Step 1: Create a new API context
   const apiContext = await request.newContext();
 
-  // Send GET request
-  const response = await apiContext.get(
-    "https://dog.ceo/api/breeds/image/random"
-  );
+  // 🟢 Step 2: Initialize the DogApi
+  const dogApi = new DogApi(apiContext);
 
-  // ✅ 1. Check status code is 200
-  expect(response.status()).toBe(200);
+  // 🟢 Step 3: Send GET request to fetch a random dog image
+  await dogApi.getRandomImageResponse();
 
-  // ✅ 2. Parse JSON response and validate image URL
-  const body = await response.json();
-  expect(body).toHaveProperty("message");
-  expect(body).toHaveProperty("status", "success");
+  // 🟢 Step 4: Verify that the response status is 200 OK
+  await dogApi.validateResponseStatus();
 
-  // Check image URL format
-  const imageUrl = body.message;
-  console.log("🐶 Image URL:", imageUrl);
+  // 🟢 Step 5: Validate the structure of the JSON response
+  // - Should include 'message' (the image URL)
+  // - Should include 'status' = 'success'
+  await dogApi.validateImageStructure();
 
-  // Very basic image URL check (ends with image extension)
-  expect(imageUrl).toMatch(/^https:\/\/.*\.(jpg|jpeg|png|gif)$/i);
+  // 🟢 Step 6: Validate that the image URL is in correct format
+  // - Must start with https and end with a common image extension
+  await dogApi.validateImageUrlFormat();
 });

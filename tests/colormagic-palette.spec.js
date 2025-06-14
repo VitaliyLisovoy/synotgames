@@ -1,45 +1,19 @@
-import { test, expect, request } from "@playwright/test";
+import { test, request } from "@playwright/test";
+import { ColorMagicApi } from "../pages/colormagic_api.page";
 
-test('ColorMagic API - Validate structure of palette search for "green"', async () => {
+test('ColorMagic API - Validate palette structure for "green"', async () => {
+  // 🟢 Step 1: Create an API context
   const apiContext = await request.newContext();
 
-  // Send GET request to ColorMagic API with q=green
-  const response = await apiContext.get(
-    "https://colormagic.app/api/palette/search?q=green"
-  );
+  // 🟢 Step 2: Initialize the ColorMagicApi
+  const colorApi = new ColorMagicApi(apiContext);
 
-  // ✅ 1. Status code check
-  expect(response.status()).toBe(200);
+  // 🟢 Step 3: Send GET request to search palettes for "green"
+  await colorApi.searchPaletteByColor("green");
 
-  // ✅ 2. Parse response
-  const body = await response.json();
+  // 🟢 Step 4: Verify that the response status is 200 OK
+  await colorApi.validateResponseStatus();
 
-  // ✅ 3. Confirm it's a non-empty array
-  expect(Array.isArray(body)).toBe(true);
-  expect(body.length).toBeGreaterThan(0);
-
-  // ✅ 4. Validate each palette
-  for (const palette of body) {
-    // Check keys
-    expect(palette).toHaveProperty("id");
-    expect(palette).toHaveProperty("colors");
-    expect(palette).toHaveProperty("tags");
-    expect(palette).toHaveProperty("text");
-    expect(palette).toHaveProperty("likesCount");
-    expect(palette).toHaveProperty("normalizedHash");
-    expect(palette).toHaveProperty("createdAt");
-
-    // Validate color values
-    expect(Array.isArray(palette.colors)).toBe(true);
-    for (const color of palette.colors) {
-      expect(color).toMatch(/^#[0-9a-fA-F]{6}$/); // hex format
-    }
-
-    // Optional: Validate "green" is among tags
-    expect(Array.isArray(palette.tags)).toBe(true);
-    const tagsLower = palette.tags.map((tag) => tag.toLowerCase());
-    expect(tagsLower).toContain("green");
-  }
-
-  console.log(`✅ Tested ${body.length} palettes successfully.`);
+  // 🟢 Step 5: Validate structure and content of each palette in the response
+  await colorApi.validateResponseStructure("green");
 });

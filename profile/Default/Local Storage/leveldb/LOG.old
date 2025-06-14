@@ -1,14 +1,5 @@
-2025/06/13-16:25:24.807 1791fe Reusing MANIFEST /Users/vitalii/Documents/synotgames/synotgames/profile/Default/Local Storage/leveldb/MANIFEST-000001
-2025/06/13-16:25:24.811 1791fe Recovering log #61
-2025/06/13-16:25:24.811 1791fe Level-0 table #64: started
-2025/06/13-16:25:24.816 1791fe Level-0 table #64: 66889 bytes OK
-2025/06/13-16:25:24.819 1791fe Delete type=0 #61
-2025/06/13-16:25:24.819 179200 Compacting 4@0 + 1@1 files
-2025/06/13-16:25:24.824 179200 Generated table #66@0: 12 keys, 37633 bytes
-2025/06/13-16:25:24.824 179200 Compacted 4@0 + 1@1 files => 37633 bytes
-2025/06/13-16:25:24.825 179200 compacted to: files[ 0 1 0 0 0 0 0 ]
-2025/06/13-16:25:24.826 179200 Delete type=2 #62
-2025/06/13-16:25:24.826 179200 Delete type=2 #64
-2025/06/13-16:25:24.826 179200 Delete type=2 #59
-2025/06/13-16:25:24.826 179200 Delete type=2 #56
-2025/06/13-16:25:24.826 179200 Delete type=2 #53
+2025/06/14-16:38:42.489 1a91bb Reusing MANIFEST /Users/vitalii/Documents/synotgames/synotgames/profile/Default/Local Storage/leveldb/MANIFEST-000001
+2025/06/14-16:38:42.492 1a91bb Recovering log #85
+2025/06/14-16:38:42.492 1a91bb Level-0 table #87: started
+2025/06/14-16:38:42.495 1a91bb Level-0 table #87: 55468 bytes OK
+2025/06/14-16:38:42.498 1a91bb Delete type=0 #85
