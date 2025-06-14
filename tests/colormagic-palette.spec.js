@@ -1,5 +1,5 @@
 import { test, request } from "@playwright/test";
-import { ColorMagicApi } from "../pages/colormagic_api.page";
+import { ColorMagicApi } from "../pages/colormagic-api.page";
 
 test('ColorMagic API - Validate palette structure for "green"', async () => {
   // 🟢 Step 1: Create an API context

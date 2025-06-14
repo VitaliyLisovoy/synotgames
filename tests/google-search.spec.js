@@ -1,5 +1,5 @@
 import { chromium, test, expect } from "@playwright/test";
-import { SearchPage } from "../pages/googleSearch.page";
+import { SearchPage } from "../pages/google-search.page";
 
 test("Google search in persistent session avoids CAPTCHA", async () => {
   // 🟢 Step 1: Launch Chrome in persistent mode (to reuse cookies and avoid CAPTCHA)

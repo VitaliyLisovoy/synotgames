@@ -1,5 +1,5 @@
 import { test, request } from "@playwright/test";
-import { DogApi } from "../pages/dog_api.page";
+import { DogApi } from "../pages/dog-api.page";
 
 test("Dog CEO API - Validate random image response via POM", async () => {
   // 🟢 Step 1: Create a new API context
